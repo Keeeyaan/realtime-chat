@@ -1,6 +1,6 @@
 type ButtonProps = {
   color?: string
-  children?: string
+  children?: React.ReactNode
   className?: string
 }
 
