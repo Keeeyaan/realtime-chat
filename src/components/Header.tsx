@@ -11,7 +11,7 @@ const Header = () => {
           <h1 className='text-xl font-bold text-white'>
             <span className='text-yellow-500'>/</span>Chatty
           </h1>
-          <Button className='hidden sm:block '>New chat</Button>
+          <Button className='hidden sm:block bg-green-500 hover:bg-green-600'>New chat</Button>
         </div>
         <div className='hidden sm:block'>
           <SearchInput />
