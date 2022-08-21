@@ -22,7 +22,7 @@ const SearchInput = () => {
         />
         <button
           type='submit'
-          className='text-white absolute right-2.5 bottom-[5px] bg-yellow-500 hover:bg-yellow-400 focus:ring-1 focus:outline-none focus:ring-yellow-500 transition-all ease-in-out duration-300 font-semibold rounded-lg text-sm px-4 py-2'
+          className='text-white absolute right-2.5 bottom-[5px] bg-blue-500 hover:bg-blue-600 focus:ring-1 focus:outline-none focus:ring-yellow-500 transition-all ease-in-out duration-300 font-semibold rounded-lg text-sm px-4 py-2'
         >
           Search
         </button>
