@@ -153,6 +153,7 @@ const Home = () => {
           {dummyRooms.map((room) => (
             <React.Fragment key={room.id}>
               <ChatRoomCard
+                id={room.id}
                 title={room.title}
                 description={room.description}
                 topics={room.topics}
