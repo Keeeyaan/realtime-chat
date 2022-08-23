@@ -1,7 +1,9 @@
-import Button from './Button'
+import { Link } from 'react-router-dom'
 
+import Button from './Button'
 type ChatRoomCardProps = {
   title: string
+  id: string | number
   description: string
   topics: {
     title: string
@@ -9,7 +11,7 @@ type ChatRoomCardProps = {
   online: number
 }
 
-const ChatRoomCard = ({ title, description, topics, online }: ChatRoomCardProps) => {
+const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardProps) => {
   return (
     <div className='transform transition-all duration-200 hover:-translate-y-1 min-h-[200px] p-3 w-[210px] shadow-md bg-white rounded'>
       <div className='mb-2 flex justify-end items-center gap-2'>
@@ -35,7 +37,9 @@ const ChatRoomCard = ({ title, description, topics, online }: ChatRoomCardProps)
           </span>
         ))}
       </div>
-      <Button className='bg-blue-500 w-full hover:bg-blue-600'>Join Room</Button>
+      <Link to={`/chat/${id}`}>
+        <Button className='bg-blue-500 w-full hover:bg-blue-600'>Join Room</Button>
+      </Link>
     </div>
   )
 }
