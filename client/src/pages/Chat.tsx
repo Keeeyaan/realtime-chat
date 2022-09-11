@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+import { useUserContext } from '../context/UserProvider'
 import Header from '../components/Header'
 import Page from './Page'
 import ChatRoomCard from '../components/UI/ChatRoomCard'
@@ -51,6 +52,11 @@ const dummyRooms = [
 ]
 
 const Chat = () => {
+  const context = useUserContext()
+  const username = context.username
+
+  const [message, setMessage] = useState('')
+
   return (
     <Page title='Chat'>
       <div className='bg-gradient-to-b from-indigo-900 h-[300px]'>
@@ -64,7 +70,7 @@ const Chat = () => {
                 Tetsu <span className='text-sm font-normal'>- Room</span>
               </h6>
             </div>
-            <ChatBox />
+            <ChatBox username={username} message={message} setMessage={setMessage} />
             <h1 className='text-white text-xl font-bold mt-8 mb-4'>Related Topics</h1>
             <div className='flex gap-2 mb-44'>
               <span className='cursor-pointer transform hover:-translate-y-1 duration-200 hover:bg-green-500 bg-green-400 rounded shadow-md py-2 px-4 font-semibold text-slate-800'>
