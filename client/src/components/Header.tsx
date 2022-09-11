@@ -12,7 +12,7 @@ const Header = () => {
           <Link to='/' className='text-xl font-bold text-white'>
             <span className='text-yellow-500'>/</span>Chatty
           </Link>
-          <Button className='hidden sm:block bg-green-500 hover:bg-green-600'>New chat</Button>
+          <Button className='hidden sm:block bg-green-500 hover:bg-green-600'>New room</Button>
         </div>
         <div className='hidden sm:block'>
           <SearchInput />
