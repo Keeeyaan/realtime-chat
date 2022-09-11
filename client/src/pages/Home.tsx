@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useUserContext } from '../context/UserProvider'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import Header from '../components/Header'
 import Page from './Page'
@@ -62,47 +63,35 @@ const dummyRooms = [
     topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
     online: 10,
   },
-  {
-    id: 7,
-    title: 'Ayaya Anime',
-    description: 'Just a bunch of weebs',
-    topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
-    online: 10,
-  },
-  {
-    id: 8,
-    title: 'Ayaya Anime',
-    description: 'Just a bunch of weebs',
-    topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
-    online: 10,
-  },
-  {
-    id: 9,
-    title: 'Ayaya Anime',
-    description: 'Just a bunch of weebs',
-    topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
-    online: 10,
-  },
-  {
-    id: 10,
-    title: 'Ayaya Anime',
-    description: 'Just a bunch of weebs',
-    topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
-    online: 10,
-  },
 ]
 
 const Home = () => {
+  const context = useUserContext()
+
   const width = useWindowDimensions()
+
+  const usernameChangeHandler = (e: any) => {
+    context.setUsername(e.target.value)
+  }
 
   return (
     <Page title='Home'>
       <div className='bg-[url(/images/dragon-scales.svg)] h-[390px]'>
         <Header />
-        <div className='flex justify-center text-center py-4'>
+        <div className='flex justify-center text-center py-3'>
           <h1 className='font-bold text-lg mx-4 text-yellow-300 sm:text-2xl'>
             Bored? Join room and talk with people according to your interest!
           </h1>
+        </div>
+        <div className='flex justify-center'>
+          <input
+            onChange={usernameChangeHandler}
+            defaultValue={context.username}
+            id='username'
+            className='block p-3 w-[300px] outline-none font-semibold text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500   '
+            placeholder='Enter your name'
+            required
+          />
         </div>
         <h1 className=' text-center mx-auto mb-3 sm:text-start px-4 container font-bold text-white uppercase'>
           Explore Topics
