@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Button from './Button'
+
 type ChatRoomCardProps = {
   title: string
   id: string | number
@@ -26,7 +27,6 @@ const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardPr
           <p className='font-bold text-lg text-white'>{title}</p>
         </div>
       </div>
-
       <div className='bg-[#474a51] rounded-b p-3'>
         <h6 className='mb-2 font-medium text-xs text-slate-300'>Description</h6>
         <p className='text-sm text-gray-300'>{description}</p>

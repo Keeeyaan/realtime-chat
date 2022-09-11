@@ -16,7 +16,7 @@ const SearchInput = () => {
         <input
           type='search'
           id='default-search'
-          className='block p-3 pl-10 w-[350px] outline-none font-semibold text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500   '
+          className='block p-3 pl-10 w-[350px] outline-none font-semibold text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500   '
           placeholder='Search Topics...'
           required
         />
