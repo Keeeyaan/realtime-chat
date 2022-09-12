@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useUserContext } from '../context/UserProvider'
-import Header from '../components/Header'
-import Page from './Page'
-import ChatRoomCard from '../components/UI/ChatRoomCard'
-import ChatBox from '../components/ChatBox'
+import { useUserContext } from '../context/UserProvider';
+import Header from '../components/Header';
+import Page from './Page';
+import ChatRoomCard from '../components/UI/ChatRoomCard';
+import ChatBox from '../components/ChatBox';
 
 const dummyRooms = [
   {
@@ -49,16 +50,23 @@ const dummyRooms = [
     topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
     online: 10,
   },
-]
+];
 
 const Chat = () => {
-  const context = useUserContext()
-  const username = context.username
+  const context = useUserContext();
+  const navigate = useNavigate();
+  const username = context.username;
 
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (!username) {
+      navigate('/');
+    }
+  }, []);
 
   return (
-    <Page title='Chat'>
+    <Page title='Room'>
       <div className='bg-gradient-to-b from-indigo-900 h-[300px]'>
         <Header />
         <div className='flex justify-center mt-14'>
@@ -106,7 +114,7 @@ const Chat = () => {
         </div>
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
