@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import Button from './Button'
+import Button from './Button';
 
 type ChatRoomCardProps = {
-  title: string
-  id: string | number
-  description: string
+  title: string;
+  id: string | number;
+  description: string;
   topics: {
-    title: string
-  }[]
-  online: number
-}
+    title: string;
+  }[];
+  online: number;
+};
 
 const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardProps) => {
   return (
@@ -41,12 +41,12 @@ const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardPr
             </span>
           ))}
         </div>
-        <Link to={`/chat/${id}`}>
+        <Link to={`/room/${id}`}>
           <Button className='bg-blue-500 w-full hover:bg-blue-600'>Join Room</Button>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatRoomCard
+export default ChatRoomCard;
