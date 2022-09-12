@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { io } from 'socket.io-client'
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { io } from 'socket.io-client';
 
 type ChatBoxProps = {
-  username: string
-  message: string
-  setMessage: React.Dispatch<React.SetStateAction<string>>
-}
+  username: string;
+  message: string;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+};
 
 interface messageListProps {
-  id: number
-  room: string
-  user: string
-  message: string
-  time: Date
+  id: number;
+  room: string;
+  user: string;
+  message: string;
+  time: Date;
 }
 
-const socket = io('http://localhost:8000', { autoConnect: false })
+const socket = io('http://localhost:8000', { autoConnect: false });
 
 const ChatBox = ({ username, message, setMessage }: ChatBoxProps) => {
-  const { id: roomId } = useParams()
+  const { id: roomId } = useParams();
 
-  const [messageList, setMessageList] = useState<messageListProps[]>([])
+  const [messageList, setMessageList] = useState<messageListProps[]>([]);
 
   const textChatHandler = (e: any) => {
-    setMessage(e.target.value)
-  }
+    setMessage(e.target.value);
+  };
 
   const sendMessage = async () => {
     if (message !== '') {
@@ -35,34 +35,33 @@ const ChatBox = ({ username, message, setMessage }: ChatBoxProps) => {
         user: username,
         message: message,
         time: new Date().toLocaleTimeString(),
-      }
-      await socket.emit('sendMessage', messageData)
-      setMessageList((list: any) => [...list, messageData])
+      };
+      await socket.emit('sendMessage', messageData);
+      setMessageList((list: any) => [...list, messageData]);
     }
-  }
+  };
 
   const submitHandler = (e: any) => {
-    e.preventDefault()
-    sendMessage()
-    setMessage('')
-  }
+    e.preventDefault();
+    sendMessage();
+    setMessage('');
+  };
 
   useEffect(() => {
-    socket.open()
-    socket.emit('joinRoom', roomId)
+    socket.open();
+    socket.emit('joinRoom', roomId);
 
     return () => {
-      socket.removeAllListeners()
-      socket.close()
-    }
-  }, [roomId])
+      socket.removeAllListeners();
+      socket.close();
+    };
+  }, [roomId]);
 
   useEffect(() => {
     socket.on('recieveMessage', (data) => {
-      setMessageList((list: any) => [...list, data])
-      console.log(data)
-    })
-  }, [socket])
+      setMessageList((list: any) => [...list, data]);
+    });
+  }, [socket]);
 
   return (
     <>
@@ -91,7 +90,7 @@ const ChatBox = ({ username, message, setMessage }: ChatBoxProps) => {
         </button>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default ChatBox
+export default ChatBox;

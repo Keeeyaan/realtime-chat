@@ -1,7 +1,7 @@
 type ButtonProps = {
-  children?: React.ReactNode
-  className?: string
-}
+  children?: React.ReactNode;
+  className?: string;
+};
 
 const Button = ({ className, children }: ButtonProps) => {
   return (
@@ -11,7 +11,7 @@ const Button = ({ className, children }: ButtonProps) => {
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { useScrollPosition } from '../hooks/useScrollPosition'
+import { useScrollPosition } from '../hooks/useScrollPosition';
 
 type scrollPosition = {
-  prevPos: any
-  currPos: any
-}
+  prevPos: any;
+  currPos: any;
+};
 
 const Footer = () => {
-  const [sticky, setSticky] = useState(true)
+  const [sticky, setSticky] = useState(true);
 
   useScrollPosition(
     ({ prevPos, currPos }: scrollPosition) => {
-      const isShow = currPos.y > prevPos.y
-      if (isShow !== sticky) setSticky(isShow)
+      const isShow = currPos.y > prevPos.y;
+      if (isShow !== sticky) setSticky(isShow);
     },
     [sticky],
-  )
+  );
 
   return (
     <div
@@ -30,7 +30,7 @@ const Footer = () => {
       <Link to='/'>Terms</Link>
       <Link to='/'>Privacy</Link>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import { useUserContext } from '../context/UserProvider'
-import useWindowDimensions from '../hooks/useWindowDimensions'
-import Header from '../components/Header'
-import Page from './Page'
-import TopicCard from '../components/UI/TopicCard'
-import ChatRoomCard from '../components/UI/ChatRoomCard'
+import { useUserContext } from '../context/UserProvider';
+import useWindowDimensions from '../hooks/useWindowDimensions';
+import Header from '../components/Header';
+import Page from './Page';
+import TopicCard from '../components/UI/TopicCard';
+import ChatRoomCard from '../components/UI/ChatRoomCard';
 
 const dummyTopics = [
   { id: 1, topic: 'Food', rooms: 10 },
@@ -18,7 +18,7 @@ const dummyTopics = [
   { id: 8, topic: 'Minecraft', rooms: 64 },
   { id: 9, topic: 'Music', rooms: 27 },
   { id: 10, topic: 'Anime', rooms: 77 },
-]
+];
 
 const dummyRooms = [
   {
@@ -63,16 +63,16 @@ const dummyRooms = [
     topics: [{ title: 'Anime' }, { title: 'Fun' }, { title: 'Weebs' }],
     online: 10,
   },
-]
+];
 
 const Home = () => {
-  const context = useUserContext()
+  const context = useUserContext();
 
-  const width = useWindowDimensions()
+  const width = useWindowDimensions();
 
   const usernameChangeHandler = (e: any) => {
-    context.setUsername(e.target.value)
-  }
+    context.setUsername(e.target.value);
+  };
 
   return (
     <Page title='Home'>
@@ -122,7 +122,7 @@ const Home = () => {
                 <React.Fragment key={data.id}>
                   <TopicCard topic={data.topic} rooms={data.rooms} />
                 </React.Fragment>
-              )
+              );
             })}
         </div>
         <div className='container mx-auto'>
@@ -156,7 +156,7 @@ const Home = () => {
         </div>
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

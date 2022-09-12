@@ -1,4 +1,4 @@
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined } from '@ant-design/icons';
 
 const SearchInput = () => {
   return (
@@ -28,7 +28,7 @@ const SearchInput = () => {
         </button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default SearchInput
+export default SearchInput;

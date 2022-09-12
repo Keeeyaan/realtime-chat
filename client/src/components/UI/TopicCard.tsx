@@ -1,7 +1,7 @@
 type TopicCardProps = {
-  topic?: string
-  rooms?: number
-}
+  topic?: string;
+  rooms?: number;
+};
 
 const TopicCard = ({ topic, rooms }: TopicCardProps) => {
   return (
@@ -14,7 +14,7 @@ const TopicCard = ({ topic, rooms }: TopicCardProps) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopicCard
+export default TopicCard;
