@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+import { useUserContext } from '../../context/UserProvider';
 import Button from './Button';
 
 type ChatRoomCardProps = {
@@ -13,6 +14,16 @@ type ChatRoomCardProps = {
 };
 
 const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardProps) => {
+  const { username, setShowNicknameModal } = useUserContext();
+  const navigate = useNavigate();
+
+  const checkLinkHandler = () => {
+    if (username) {
+      return navigate(`/room/${id}`);
+    }
+    setShowNicknameModal(false);
+  };
+
   return (
     <div className='transform transition-all duration-200 hover:-translate-y-1 min-h-[200px] w-[210px] shadow-md rounded'>
       <div className='w-full rounded-t bg-indigo-700 min-h-[90px] p-3'>
@@ -41,9 +52,9 @@ const ChatRoomCard = ({ id, title, description, topics, online }: ChatRoomCardPr
             </span>
           ))}
         </div>
-        <Link to={`/room/${id}`}>
-          <Button className='bg-blue-500 w-full hover:bg-blue-600'>Join Room</Button>
-        </Link>
+        <Button onClick={checkLinkHandler} className='bg-blue-500 w-full hover:bg-blue-600'>
+          Join Room
+        </Button>
       </div>
     </div>
   );
